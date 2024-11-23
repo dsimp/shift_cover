@@ -25,7 +25,8 @@ module ShiftCover
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w[assets tasks])
+    # Add the `lib` directory to autoload paths, excluding specific subdirectories
+config.autoload_paths += Dir["#{config.root}/lib", "#{config.root}/lib/**/"] - Dir["#{config.root}/lib/assets", "#{config.root}/lib/tasks"]
 
     # Configuration for the application, engines, and railties goes here.
     #
